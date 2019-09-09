@@ -14,6 +14,9 @@
 		DB1569452326518800220926 /* DNDOrderList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DB1569432326518800220926 /* DNDOrderList.xcdatamodeld */; };
 		DB1569472326518900220926 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB1569462326518900220926 /* Assets.xcassets */; };
 		DB15694A2326518900220926 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB1569482326518900220926 /* LaunchScreen.storyboard */; };
+		DB156952232651E600220926 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB156951232651E600220926 /* Item.swift */; };
+		DB1569552326556400220926 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1569542326556400220926 /* ItemTableViewCell.swift */; };
+		DB15695723265D4D00220926 /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15695623265D4D00220926 /* NSManagedObjectContext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		DB1569462326518900220926 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB1569492326518900220926 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB15694B2326518900220926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB156951232651E600220926 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		DB1569542326556400220926 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		DB15695623265D4D00220926 /* NSManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +64,27 @@
 		DB1569392326518800220926 /* DNDOrderList */ = {
 			isa = PBXGroup;
 			children = (
+				DB1569532326521F00220926 /* CoreData */,
 				DB15693A2326518800220926 /* AppDelegate.swift */,
 				DB15693C2326518800220926 /* SceneDelegate.swift */,
 				DB15693E2326518800220926 /* ViewController.swift */,
+				DB1569542326556400220926 /* ItemTableViewCell.swift */,
 				DB1569402326518800220926 /* Main.storyboard */,
 				DB1569462326518900220926 /* Assets.xcassets */,
 				DB1569482326518900220926 /* LaunchScreen.storyboard */,
 				DB15694B2326518900220926 /* Info.plist */,
-				DB1569432326518800220926 /* DNDOrderList.xcdatamodeld */,
 			);
 			path = DNDOrderList;
+			sourceTree = "<group>";
+		};
+		DB1569532326521F00220926 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				DB1569432326518800220926 /* DNDOrderList.xcdatamodeld */,
+				DB156951232651E600220926 /* Item.swift */,
+				DB15695623265D4D00220926 /* NSManagedObjectContext.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +158,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB156952232651E600220926 /* Item.swift in Sources */,
 				DB15693F2326518800220926 /* ViewController.swift in Sources */,
 				DB15693B2326518800220926 /* AppDelegate.swift in Sources */,
 				DB15693D2326518800220926 /* SceneDelegate.swift in Sources */,
+				DB1569552326556400220926 /* ItemTableViewCell.swift in Sources */,
 				DB1569452326518800220926 /* DNDOrderList.xcdatamodeld in Sources */,
+				DB15695723265D4D00220926 /* NSManagedObjectContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
