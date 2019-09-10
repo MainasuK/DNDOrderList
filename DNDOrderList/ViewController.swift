@@ -51,9 +51,14 @@ class ViewController: UIViewController {
         fetchedResultsController.delegate = self
         try! fetchedResultsController.performFetch()
 
+        tableView.dragInteractionEnabled = true
+        tableView.dragDelegate = self
+        tableView.dropDelegate = self
+        
         tableView.delegate = self
         tableView.dataSource = diffableDataSource
         updateDataSource()
+
     }
 
 }
@@ -74,6 +79,18 @@ final class ItemTableViewDiffableDataSource<SectionIdentifierType, ItemIdentifie
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        var snapshot = self.snapshot()
+        let items = snapshot.itemIdentifiers
+        let sourceItem = items[sourceIndexPath.row]
+        let destinationItem: ItemIdentifierType = {
+            return items.first!
+        }()
+
+        snapshot.moveItem(sourceItem, beforeItem: destinationItem)
+        self.apply(snapshot)
     }
 
 }
@@ -141,6 +158,40 @@ extension ViewController: UITableViewDelegate {
         configuration.performsFirstActionWithFullSwipe = true
 
         return configuration
+    }
+
+}
+
+
+// MARK: - UITableViewDragDelegate
+extension ViewController: UITableViewDragDelegate {
+
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        return [UIDragItem(itemProvider: NSItemProvider())]
+    }
+
+    func tableView(_ tableView: UITableView, dragPreviewParametersForRowAt indexPath: IndexPath) -> UIDragPreviewParameters? {
+        let parameters = UIDragPreviewParameters()
+        parameters.backgroundColor = .clear
+        return parameters
+    }
+
+}
+
+// MARK: - UITableViewDropDelegate
+extension ViewController: UITableViewDropDelegate {
+
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        guard let dragSession = session.localDragSession else {
+            return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
+        }
+
+        // drag in same app
+        return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+    }
+
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+        coordinator.
     }
 
 }
