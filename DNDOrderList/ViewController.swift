@@ -81,6 +81,7 @@ final class ItemTableViewDiffableDataSource<SectionIdentifierType, ItemIdentifie
         return true
     }
 
+    /*
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         var snapshot = self.snapshot()
         let items = snapshot.itemIdentifiers
@@ -92,6 +93,7 @@ final class ItemTableViewDiffableDataSource<SectionIdentifierType, ItemIdentifie
         snapshot.moveItem(sourceItem, beforeItem: destinationItem)
         self.apply(snapshot)
     }
+    */
 
 }
 
